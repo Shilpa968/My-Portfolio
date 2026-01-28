@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Skills</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+    background: linear-gradient(to right, rgb(255,255,255), rgb(254,215,173));
+}
+
+nav{
+    width: 100%;
+    height: 10vh;
+    position: sticky;
+
+  
+}
+
+.nav-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav-container .links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+.nav-container .links a{
+    position: relative;
+    font-size: 1.2rem;
+    color: black;
+    text-decoration: none;
+    font-weight:bold;
+    transform: 0.3s linear;
+}
+.nav-container .links a::before{
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: rgb(109,67, 0);
+    transition: 0.2s linear;
+}
+.nav-container .links a:hover::before{
+    width: 100%;
+}
+.nav-container .contact-btn{
+    background-color: transparent;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 2px solid rgb(109,67, 0);
+    transition: 0.2s linear;
+}
+.nav-container .contact-btn a{
+    color: rgb(37, 35, 35);
+    transition: 0.3s linear;
+    font-weight: bold;
+}
+.nav-container .contact-btn:hover, .nav-container .contact-btn:hover a{
+    background-color: rgb(109,67, 0);
+    color: white;
+}
+
+.skills-section {
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.skills-section h1 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.skills-section h1 span {
+  color: #3b82f6;
+}
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.skill-card {
+  background-color: #1e293b;
+  padding: 20px 30px;
+  border-radius: 15px;
+  transition: transform 0.3s;
+}
+
+.skill-card:hover {
+  transform: scale(1.02);
+}
+
+.skill-card h2 {
+  text-align: left;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.bar {
+  width: 100%;
+  background-color: #334155;
+  height: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  width: 0;
+  animation: fillBar 2s forwards;
+}
+
+.progress.html { width: 95%; }
+.progress.css { width: 90%; }
+.progress.js { width: 85%; }
+.progress.react { width: 80%; }
+.progress.responsive { width: 92%; }
+.progress.python { width: 85%;
+
+}
+.hamburg{
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: rgb(109,67,0);
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fillBar {
+  from { width: 0; }
+}
+@media (max-width:768px){
+  .nav-container{
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .links{
+    max-height:0;
+    overflow:hidden;
+    flex-direction:column;
+    gap:1rem;
+    background:white;
+    position:absolute;
+    top:10vh;
+    right:0;
+    width:220px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    border-radius:10px;
+    transition:max-height 0.4s ease-in-out, padding 0.3s ease;
+    padding:0 20px;
+  }
+
+  .links.active{
+    max-height:400px;
+    padding:20px;
+  }
+
+  .hamburg{
+    display:block;
+  }
+}
+
+
+   </style>
+</head>
+<body>
+
+  <header>
+   <nav>
+        <div class="nav-container">
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="port.html">Home</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="aboutpage.html">About</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a
+                        href="skillpage.html">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a
+                        href="project.html">Project</a></div>
+    
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a
+                        href="contactpage.html">Contact Me</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+    </nav>
+  </header>
+
+  <section class="skills-section">
+    <h1>My <span>Skills</span></h1>
+    <div class="skills-container">
+      <div class="skill-card">
+        <h2>HTML</h2>
+        <div class="bar"><div class="progress html"></div></div>
+      </div>
+      <div class="skill-card">
+        <h2>CSS</h2>
+        <div class="bar"><div class="progress css"></div></div>
+      </div>
+      <div class="skill-card">
+        <h2>JavaScript</h2>
+        <div class="bar"><div class="progress js"></div></div>
+      </div>
+      <div class="skill-card">
+        <h2>React</h2>
+        <div class="bar"><div class="progress react"></div></div>
+      </div>
+      <div class="skill-card">
+        <h2>Bootstrap</h2>
+        <div class="bar"><div class="progress responsive"></div></div>
+      </div>
+    <div class="skill-card">
+        <h2>Python</h2>
+        <div class="bar"><div class="progress python"></div></div>
+    </div>
+    <div class="skill-card">
+        <h2>PHP & MySql</h2>
+        <div class="bar"><div class="progress js"></div></div>
+    </div>
+  </div>
+  </section>
+
+  <script>
+    // Optional animation refresh on scroll or reload
+window.addEventListener("load", () => {
+  const bars = document.querySelectorAll(".progress");
+  bars.forEach(bar => {
+    bar.style.animation = "fillBar 2s forwards";
+  });
+});
+    
+        function hamburg() {
+      const navbar = document.querySelector(".links");
+      navbar.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

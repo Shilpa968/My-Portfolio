@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Me - Frontend Developer</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            background: linear-gradient(to right, rgb(255, 255, 255), rgb(254, 215, 173));
+        }
+
+        nav {
+            width: 100%;
+            height: 10vh;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            
+        }
+
+        .nav-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-container .links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-container .links a {
+            position: relative;
+            font-size: 1.2rem;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s linear;
+        }
+
+        .nav-container .links a::before {
+            position: absolute;
+            content: "";
+            bottom: -3px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: rgb(109, 67, 0);
+            transition: 0.3s linear;
+        }
+
+        .nav-container .links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-container .contact-btn {
+            background-color: transparent;
+            padding: 5px 20px;
+            border-radius: 20px;
+            border: 2px solid rgb(109, 67, 0);
+            transition: 0.2s linear;
+        }
+
+        .nav-container .contact-btn a {
+            color: rgb(21, 20, 19);
+            transition: 0.3s linear;
+            font-weight: bold;
+        }
+
+        .nav-container .contact-btn:hover,
+        .nav-container .contact-btn:hover a {
+            background-color: rgb(109, 67, 0);
+            color: white;
+        }
+
+
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgb(255, 253, 253);
+            border-radius: 13px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1,
+        h2 {
+            color: #007acc;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #005f99;
+        }
+
+        .more {
+            display: none;
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Projects Section */
+        .projects h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-card h3 {
+            color: #ff5722;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .project-card a {
+            text-decoration: none;
+            color: #007acc;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .project-card a:hover {
+            color: #005f99;
+        }
+
+        .project-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* Responsive Navbar */
+        .hamburg {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: rgb(109, 67, 0);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                justify-content: space-between;
+                padding: 0 20px;
+            }
+
+            .links {
+                max-height: 0;
+                overflow: hidden;
+                flex-direction: column;
+                gap: 1rem;
+                background: white;
+                position: absolute;
+                top: 10vh;
+                right: 0;
+                width: 220px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                transition: max-height 0.4s ease-in-out, padding 0.3s ease;
+                padding: 0 20px;
+            }
+
+            .links.active {
+                max-height: 400px;
+                padding: 20px;
+            }
+
+            .hamburg {
+                display: block;
+            }
+
+            .links a::before {
+                bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="links">
+                <div class="link"><a href="port.html">Home</a></div>
+                <div class="link"><a href="aboutpage.html">About</a></div>
+                <div class="link"><a href="skillpage.html">Skills</a></div>
+                <div class="link"><a href="#projects">Project</a></div>
+                <div class="link contact-btn"><a href="contactpage.html">Contact Me</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <h2 data-aos="fade-down">My Projects</h2>
+            <div class="project-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Portfolio Website</h3>
+                    <p>A personal website showcasing my skills, projects, and contact information with a responsive
+                        layout.</p>
+                    <a href="https://github.com/Shilpa968/Portfolio-design-practice" target="_blank">View Project</a>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>E-commerce Store(Grocery Store-FreshMart)</h3>
+                    <p>Developed a mock e-commerce site with product listings, shopping cart, and responsive checkout
+                        pages using html,css,js,bootstrap,php and mysql.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Women Safety App</h3>
+                    <p>An AI & ML-powered application that integrates with CCTV cameras to detect unsafe situations and
+                        trigger alerts in real time, ensuring women's safety</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>Patient-Health-Tracking-Dashboard</h3>
+                    <p>The Doctor Booking and Patient Health Management System is developed as a full-stack web
+                        application. It enables patients to book appointments conveniently,
+                        doctors to manage their schedules effectively</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                    <h3>Product Recommandation System</h3>
+                    <p>An intelligent recommendation engine built using Machine Learning algorithms that analyzes
+                        user behavior and purchase history to suggest personalized products, enhancing the shopping
+                        experience.</p>
+                    <a href="#">View Project</a>
+                </div>
+
+            </div>
+    </div>
+    </section>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        function hamburg() {
+            const navbar = document.querySelector(".links");
+            navbar.classList.toggle("active");
+        }
+        AOS.init({ duration: 900, once: true });
+    </script>
+</body>
+
+</html>
